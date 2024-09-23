@@ -1,6 +1,8 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+//    alias(libs.plugins.android.application)
+//    alias(libs.plugins.kotlin.android)
+    id("com.android.library")
+    kotlin("android")
 }
 
 android {
@@ -8,11 +10,11 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "vn.vnpd.demosdk"
+//        applicationId = "vn.vnpd.demosdk"
         minSdk = 22
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+//        versionCode = 1
+//        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -22,7 +24,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -51,6 +53,7 @@ android {
 
 dependencies {
 
+    implementation(kotlin("stdlib"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
