@@ -62,6 +62,18 @@ fun GreetingPreview() {
     var isModalDate = remember { mutableStateOf(false) }
     var dateTimeState = remember { mutableStateOf("") }
 
+    fun handleDateSelected(date: Long?): Unit {
+        dateTimeState.value = formatDateTime(date)
+    }
+
+    fun showModalCalendar() {
+        isModalDate.value = true
+    }
+
+    fun hideModalCalendar() {
+        isModalDate.value = false
+    }
+
     DemosdkTheme(dynamicColor = false) {
         Scaffold(
             topBar = {
@@ -96,7 +108,7 @@ fun GreetingPreview() {
                     )
 
                     TextButton(
-                        onClick = { isModalDate.value = true },
+                        onClick = { showModalCalendar() },
                         enabled = true,
                         modifier = Modifier.padding(top = 25.dp)
                     ) {
@@ -107,10 +119,8 @@ fun GreetingPreview() {
 
             if (isModalDate.value) {
                 DatePickerModal(
-                    onDateSelected = { selectedDate ->
-                        dateTimeState.value = formatDateTime(selectedDate)
-                    },
-                    onDismiss = { isModalDate.value = false })
+                    onDateSelected = { handleDateSelected(it) },
+                    onDismiss = { hideModalCalendar() })
             }
         }
     }
@@ -120,7 +130,7 @@ fun GreetingPreview() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DatePickerModal(
-    onDateSelected: (selectDate: Long?) -> Unit, onDismiss: () -> Unit
+    onDateSelected: (date: Long?) -> Unit, onDismiss: () -> Unit
 ) {
     val datePickerState = rememberDatePickerState()
 
