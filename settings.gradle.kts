@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "demosdk"
 include(":app")
- 
+include(":mylibrary")
