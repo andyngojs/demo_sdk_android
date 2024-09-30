@@ -1,4 +1,4 @@
-package vn.vnpd.mylibrary
+package vn.vnpd.mylibrary.ui.components
 
 import android.os.Build
 import android.util.Log
