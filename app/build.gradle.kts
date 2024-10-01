@@ -52,6 +52,13 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    // define a BOM and its version
+    implementation(platform(libs.okhttp.bom))
+    // define any required OkHttp artifacts without version
+    implementation(libs.okhttp3.okhttp)
+    implementation(libs.logging.interceptor)
+    
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.navigation.runtime.ktx)
 

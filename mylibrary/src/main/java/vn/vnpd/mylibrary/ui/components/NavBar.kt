@@ -1,6 +1,5 @@
 package vn.vnpd.mylibrary.ui.components
 
-import android.app.Activity
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -20,9 +19,9 @@ import vn.vnpd.mylibrary.ui.theme.Yellow40
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NavBar(
-    activity: Activity,
     title: String,
-    content: @Composable (innerPadding: PaddingValues) -> Unit
+    onBack: () -> Unit,
+    content: @Composable (innerPadding: PaddingValues) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -39,7 +38,7 @@ fun NavBar(
                 },
                 navigationIcon = {
                     IconButton(
-                        onClick = { activity.finish() },
+                        onClick = { onBack() },
                         colors = IconButtonDefaults.iconButtonColors(
                             contentColor = MaterialTheme.colorScheme.onPrimary
                         )

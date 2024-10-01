@@ -8,8 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 
-import vn.vnpd.mylibrary.ui.screens.ConfirmPayment
-import vn.vnpd.mylibrary.ui.screens.PaymentMethod
+import vn.vnpd.mylibrary.ui.screens.PaymentConfirm.PaymentConfirm
+import vn.vnpd.mylibrary.ui.screens.PaymentMethod.PaymentMethod
 import vn.vnpd.mylibrary.ui.screens.Screen
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -22,7 +22,7 @@ fun SDKNavigation(activity: Activity) {
             PaymentMethod(activity, navController)
         }
         composable(route = Screen.PaymentConfirm.route) {
-            ConfirmPayment()
+            PaymentConfirm(navController)
         }
     }
 }

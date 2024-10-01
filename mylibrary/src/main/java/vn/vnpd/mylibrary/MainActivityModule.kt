@@ -21,9 +21,10 @@ class MainActivityModule : ComponentActivity() {
         val token = intent.getStringExtra("TOKEN")
 
         // hiện thị toast android thông báo
-        if (baseURL !== "" || token !== "") {
+        if (baseURL !== null || token !== null) {
             showMessage(ctx = this, message = "${token.toString()}\n ${baseURL.toString()}")
         }
+
         enableEdgeToEdge()
         setContent {
             SDKNavigation(this@MainActivityModule)

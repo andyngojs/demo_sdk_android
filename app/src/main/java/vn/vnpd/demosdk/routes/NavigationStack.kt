@@ -8,7 +8,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import vn.vnpd.demosdk.ui.screens.DetailScreen
-import vn.vnpd.demosdk.render
+import vn.vnpd.demosdk.ui.screens.Main.render
+
 import vn.vnpd.demosdk.ui.screens.Screen
 
 @Composable
