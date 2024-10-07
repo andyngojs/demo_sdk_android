@@ -1,15 +1,20 @@
 package vn.vnpd.mylibrary
 
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.annotation.RequiresApi
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
 
 import vn.vnpd.mylibrary.routes.SDKNavigation
 import vn.vnpd.mylibrary.utils.showMessage
+
+val LocalActivity = staticCompositionLocalOf<ComponentActivity> {
+    error("LocalActivity is not present")
+}
 
 class MainActivityModule : ComponentActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -27,13 +32,9 @@ class MainActivityModule : ComponentActivity() {
 
         enableEdgeToEdge()
         setContent {
-            SDKNavigation(this@MainActivityModule)
+            CompositionLocalProvider(LocalActivity provides this@MainActivityModule) {
+                SDKNavigation()
+            }
         }
-    }
-
-    // param: activity context phải truyền từ thằng cha (nơi nó được gọi)
-    // Example: testFx được gọi từ MainActivity (module: app) nên phải truyền context
-    fun testFx(activity: Context) {
-        showMessage(activity, "Test dataa")
     }
 }

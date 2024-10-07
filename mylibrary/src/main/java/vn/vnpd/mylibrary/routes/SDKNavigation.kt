@@ -14,12 +14,12 @@ import vn.vnpd.mylibrary.ui.screens.Screen
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun SDKNavigation(activity: Activity) {
+fun SDKNavigation() {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = Screen.PaymentMethod.route) {
         composable(route = Screen.PaymentMethod.route) {
-            PaymentMethod(activity, navController)
+            PaymentMethod(navController)
         }
         composable(route = Screen.PaymentConfirm.route) {
             PaymentConfirm(navController)

@@ -17,31 +17,27 @@ class ApiHandler {
         return this._baseDomain + endpoint
     }
 
-    fun get(endpoint: String): JSONArray? {
+    fun get(endpoint: String): JSONArray {
         val apiUrl = this.getApiUrl(endpoint)
         val request = Request.Builder().url(apiUrl).get().build()
 
         try {
             val response = baseApiHandler(request)
-            return response
+            return JSONArray(response)
         } catch (e: IOException) {
             throw IOException("error_api_get: " + e)
         }
     }
 
-    private fun baseApiHandler(request: Request): JSONArray? {
+    private fun baseApiHandler(request: Request): String? {
         val response = httpClient.newCall(request).execute()
 
         try {
-            if (!response.isSuccessful) {
-                return null
-            }
+            if (!response.isSuccessful) return null
 
-            if (response.body == null) {
-                return null
-            }
+            if (response.body == null) return null
 
-            return JSONArray(response.body?.string())
+            return response.body?.string()
         } catch (e: IOException) {
             throw IOException("Error_baseApiHandler: " + e)
         }

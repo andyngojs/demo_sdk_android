@@ -2,6 +2,7 @@ package vn.vnpd.demosdk.ui.screens.Main
 
 import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
@@ -24,8 +25,10 @@ data class List(
 class MainViewModel : ViewModel() {
     private val client = OkHttpClient()
     var list = mutableStateListOf<List>()
+    var isLoading = mutableStateOf(false)
 
     fun getData() {
+        isLoading.value = true
         viewModelScope.launch {
             val response = withContext(Dispatchers.IO) {
                 callAPI()
@@ -49,6 +52,7 @@ class MainViewModel : ViewModel() {
                 )
             }
             list.addAll(listFormated)
+            isLoading.value = false
         }
     }
 

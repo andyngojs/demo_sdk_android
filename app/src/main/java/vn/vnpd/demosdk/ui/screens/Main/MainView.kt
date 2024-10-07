@@ -5,9 +5,11 @@ import android.content.Intent
 import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -27,13 +29,14 @@ import androidx.navigation.NavController
 import vn.vnpd.demosdk.ui.screens.Screen
 import vn.vnpd.demosdk.ui.theme.DemosdkTheme
 import vn.vnpd.mylibrary.MainActivityModule
+import vn.vnpd.mylibrary.ui.theme.Yellow40
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun render(activity: Activity, navController: NavController, viewModel: MainViewModel = viewModel()) {
 
     LaunchedEffect(Unit) {
-        viewModel.getData()
+//        viewModel.getData()
     }
 
     DemosdkTheme(dynamicColor = false) {
@@ -68,15 +71,19 @@ fun render(activity: Activity, navController: NavController, viewModel: MainView
                     Text("go to Detail screen")
                 }
 
-                LazyColumn {
-                    item() {
-                        Text("Lists")
-                    }
+                if (viewModel.isLoading.value) {
+                    CircularProgressIndicator(color = Yellow40, modifier = Modifier.width(50.dp))
+                } else {
+                    LazyColumn {
+                        item() {
+                            Text("Lists")
+                        }
 
-                    items(viewModel.list) { item ->
-                        Column {
-                            Text(item.title, color = Color.LightGray)
-                            Text(item.body)
+                        items(viewModel.list) { item ->
+                            Column {
+                                Text(item.title, color = Color.LightGray)
+                                Text(item.body)
+                            }
                         }
                     }
                 }

@@ -65,7 +65,7 @@ fun GreetingPreview() {
                     navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
                 ),
                 title = {
-                    Text("Phương thức thanh toán", fontSize = 20.sp)
+                    Text("Preview Test View", fontSize = 20.sp)
                 },
                 navigationIcon = {
                     IconButton(
@@ -84,22 +84,44 @@ fun GreetingPreview() {
     ) { innerPadding ->
         Column(
             verticalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxSize().padding(innerPadding),
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding),
         ) {
             Column(modifier = Modifier.fillMaxWidth()) {
-                Row(modifier = Modifier.padding(15.dp).fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Row(
+                    modifier = Modifier
+                        .padding(15.dp)
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
                     Text("Mã giao dịch: ")
                     Text("123333434444", textAlign = TextAlign.End, fontWeight = FontWeight(800))
                 }
-                Row(modifier = Modifier.padding(15.dp).fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Row(
+                    modifier = Modifier
+                        .padding(15.dp)
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
                     Text("Số tiền thanh toán: ")
                     Text("2.000.000", textAlign = TextAlign.End, fontWeight = FontWeight(800))
                 }
-                Row(modifier = Modifier.padding(15.dp).fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Row(
+                    modifier = Modifier
+                        .padding(15.dp)
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
                     Text("Phí giao dịch: ")
                     Text("2.000.000", textAlign = TextAlign.End, fontWeight = FontWeight(800))
                 }
-                Row(modifier = Modifier.padding(15.dp).fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Row(
+                    modifier = Modifier
+                        .padding(15.dp)
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
                     Text("Phí giao dịch: ")
                     Text("2.000.000", textAlign = TextAlign.End, fontWeight = FontWeight(800))
                 }
@@ -107,9 +129,20 @@ fun GreetingPreview() {
 
 
             Column(modifier = Modifier.fillMaxWidth()) {
-                Row(modifier = Modifier.padding(innerPadding).fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text("Tổng thanh toán: ")
-                    Text("2.000.000", textAlign = TextAlign.End, fontWeight = FontWeight(800), color = vn.vnpd.mylibrary.ui.theme.Yellow40)
+                Row(
+                    modifier = Modifier
+                        .padding(start = 15.dp, end = 15.dp)
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text("Tổng thanh toán: ", style = MaterialTheme.typography.titleMedium)
+                    Text(
+                        "2.000.000",
+                        style = MaterialTheme.typography.labelLarge,
+                        textAlign = TextAlign.End,
+                        fontWeight = FontWeight(600),
+                        color = Yellow40
+                    )
                 }
 
                 Button(
@@ -118,7 +151,7 @@ fun GreetingPreview() {
                         .fillMaxWidth()
                         .padding(start = 20.dp, end = 20.dp, top = 20.dp),
                     colors = ButtonColors(
-                        containerColor = vn.vnpd.mylibrary.ui.theme.Yellow40,
+                        containerColor = Yellow40,
                         contentColor = MaterialTheme.colorScheme.onPrimary,
                         disabledContentColor = MaterialTheme.colorScheme.onBackground,
                         disabledContainerColor = MaterialTheme.colorScheme.background

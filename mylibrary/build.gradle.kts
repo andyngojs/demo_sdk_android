@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview.android)
 //    Navigation
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.room.ktx)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
